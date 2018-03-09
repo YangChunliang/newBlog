@@ -1,6 +1,6 @@
-# blog
+# vue
 
-> 重构博客
+> A Vue.js project
 
 ## Build Setup
 
