@@ -27,14 +27,14 @@ export default new Router({
             component: Link
         },
         {
-            path: '/onfile',
-            name: 'OnFile',
-            component: OnFile
-        },
-        {
             path: '/specialtopic',
             name: 'SpecialTopic',
             component: SpecialTopic
+        },
+        {
+            path: '/onfile',
+            name: 'OnFile',
+            component: OnFile
         }
     ]
 })

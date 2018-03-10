@@ -1,18 +1,29 @@
 <template>
 <div class="my-back2">
-    这是后台页面hahah
+    <my-login :flag="isAdmin" @ok="loginPass"></my-login>
+    <div>后台正文</div>
 </div>
 </template>
 
 <script>
+    import MyLogin from './components/MyLogin.vue'
     export default {
-        name: "back"
+        name: "back",
+        components: {
+            MyLogin
+        },
+        data(){
+            return{
+                isAdmin: true
+            }
+        },
+        methods: {
+            loginPass(){
+                this.isAdmin = false;
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .my-back2{
-        display: inline-block;
-        background-color: #ccc;
-    }
 </style>

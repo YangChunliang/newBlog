@@ -1,10 +1,20 @@
-const fs = require('fs');
-let getLogin = async (ctx, next) => {
+let fn_login = async (ctx, next) => {
     await next();
-    ctx.response.type = 'html';
-    ctx.response.body = fs.createReadStream('./views/backManage.html');
+    let
+        name = ctx.request.body.user || '',
+        password = ctx.request.body.psw || '';
+    if (name === '亮哥' && password === 'zuishuai') {
+        ctx.response.body = {result: {
+                isAdmin: true
+            }}
+    } else {
+        ctx.response.body = {result: {
+                isAdmin: false
+        }}
+    }
 };
 
 module.exports = {
-    'GET /login': getLogin
+    'POST /login': fn_login
 };
+
