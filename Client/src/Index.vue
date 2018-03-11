@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <left-nav></left-nav>
+
     <router-view></router-view>
+
   </div>
 </template>
 
@@ -11,8 +13,10 @@ export default {
   name: 'app',
   data () {
     return {
+        input: ''
     }
   },
+
   components: {
       LeftNav
   }

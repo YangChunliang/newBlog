@@ -5,6 +5,7 @@
                 <router-link :to="item.href">{{item.name}}</router-link>
             </li>
         </ul>
+        <a href="/backManage.html"><i class="el-icon-setting"></i></a>
     </div>
 </template>
 
@@ -33,6 +34,16 @@
                 ]
             }
 
+        },
+        methods: {
+            startHacking () {
+                this.$notify({
+                    title: 'It works!',
+                    type: 'success',
+                    message: 'We\'ve laid the ground work for you. It\'s time for you to build something epic!',
+                    duration: 5000
+                })
+            }
         }
     }
 </script>
