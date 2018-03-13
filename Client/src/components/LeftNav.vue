@@ -1,14 +1,15 @@
 <template>
     <div class="left-nav">
         <img class="left-header" src="../../static/img/my-header.png" alt="">
-        <div class="left-name">Younger</div>
+        <div class="left-name">林殊</div>
         <div class="left-infor">不积跬步无以至千里</div>
         <ul>
             <li class="left-item" v-for="item in infor">
                 <router-link :to="item.href"><i :class="item.lei"></i> {{item.name}}</router-link>
             </li>
         </ul>
-        <li class="left-item"><a href="/backManage.html"><i class="el-icon-setting"></i> 设置</a></li>
+        <li class="left-item"><a href="/backManage.html"><i class="fa fa-cog fa-spin"></i> 设置</a></li>
+        <img class="fish-move" src="../../static/img/fish-move.gif" alt="">
     </div>
 </template>
 
@@ -22,23 +23,23 @@
                     {
                         href: '/',
                         name: '首页',
-                        lei: 'el-icon-loading'
+                        lei: 'fa fa-home'
                     },{
                         href: '/specialtopic',
                         name: '专题',
-                        lei: 'el-icon-goods'
+                        lei: 'fa fa-linux'
                     },{
                         href: '/onfile',
                         name: '归档',
-                        lei: 'el-icon-bell'
+                        lei: 'fa fa-apple'
                     },{
                         href: '/link',
                         name: '友链',
-                        lei: 'el-icon-share'
+                        lei: 'fa fa-link'
                     },{
                         href: '/about',
                         name: '关于',
-                        lei: 'el-icon-service'
+                        lei: 'fa fa-gitlab'
                     }
                 ]
             }
@@ -91,5 +92,10 @@
     }
     .left-item>a:hover{
         text-shadow: 1px 1px #e4bebe;
+    }
+    .fish-move{
+        width:60%;
+        margin-top:50px;
+        margin-left:40px;
     }
 </style>
