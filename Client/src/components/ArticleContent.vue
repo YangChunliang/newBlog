@@ -1,8 +1,8 @@
 <template>
     <div class="content">
-        <div class="content-item" v-for="item in helloData">
+        <div class="content-item" v-for="item in contentData">
             <a class="c-title" href="javascript:;">{{ item.title }}</a>
-            <p>{{ item.content }}</p>
+            <p>{{ item.description }}</p>
             <a class="c-continue" href="javascript:;">继续阅读 >></a>
         </div>
     </div>
@@ -14,7 +14,7 @@
         name: "article-content",
         data () {
             return {
-                helloData: ""
+                contentData: []
             }
         },
         mounted(){
@@ -22,7 +22,7 @@
                 method: 'get',
                 url: 'http://localhost:3000/content',
             }).then((response) => {
-                this.helloData = response.data;
+                this.contentData = response.data.content;
             })
         }
     }
