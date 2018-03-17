@@ -4,9 +4,9 @@
             <a class="c-title" href="javascript:;">{{ item.title }}</a>
             <p>{{ item.description }}</p>
             <a class="c-continue" href="javascript:;">继续阅读 >></a>
-            <span>
+            <span class="my-infor">
                 <div>{{ getFormatTime(item.addTime) }}</div>
-                <div>{{ item.views }}</div>
+                <div class="my-view">阅读量 : {{ item.views }} </div>
             </span>
         </div>
         <el-pagination
@@ -72,13 +72,14 @@
         margin-left: 20vw;
     }
     .content-item{
+        position:relative;
         border-bottom: solid 1px #d9e2ea;
         margin-bottom: 30px;
         width:1015px;
     }
     .content-item>.c-title{
         font-size: 28px;
-        font-weight: normal;
+        font-weight: 300;
         color: #333;
         transition: color .3s;
     }
@@ -101,5 +102,15 @@
     }
     .el-pagination{
         text-align: center;
+    }
+    .my-infor{
+        position:absolute;
+        top:0;
+        right:0;
+        color: #555;
+        font-size: .9em;
+    }
+    .my-view{
+        text-align: right;
     }
 </style>
