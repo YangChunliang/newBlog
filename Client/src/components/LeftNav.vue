@@ -62,7 +62,9 @@
     .left-nav{
         width:20vw;
         height:100vh;
-        float:left;
+        position: fixed;
+        top:0;
+        left:0;
         background:url("../../static/img/my-bgcnav.png");
     }
     .left-header{

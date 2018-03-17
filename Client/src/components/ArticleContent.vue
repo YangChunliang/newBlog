@@ -4,6 +4,10 @@
             <a class="c-title" href="javascript:;">{{ item.title }}</a>
             <p>{{ item.description }}</p>
             <a class="c-continue" href="javascript:;">继续阅读 >></a>
+            <span>
+                <div>{{ getFormatTime(item.addTime) }}</div>
+                <div>{{ item.views }}</div>
+            </span>
         </div>
         <el-pagination
                 background
@@ -11,11 +15,13 @@
                 @current-change="handleCurrentChange"
                 :page-count="page_total">
         </el-pagination>
+        <my-footer></my-footer>
     </div>
 </template>
 
 <script>
     import Axios from 'axios';
+    import MyFooter from './MyFooter.vue';
     export default {
         name: "article-content",
         data () {
@@ -40,19 +46,34 @@
                     this.contentData = data.content;
                     this.page_total = data.pages;
                 })
+            },
+            getFormatTime(time_str){
+                return time_str.split('T')[0];
             }
+        },
+        computed: {
+            // 计算属性的 getter
+            reversedMessage: function () {
+                // `this` 指向 vm 实例
+                // return this.message.split('').reverse().join('')
+            }
+        },
+        components: {
+            MyFooter
         }
     }
 </script>
 
 <style scoped>
     .content{
-        padding: 40px 0 0 38px;
+        padding: 40px 0 30px 38px;
         /*background-color: #ccc;*/
         display: inline-block;
+        margin-left: 20vw;
     }
     .content-item{
         border-bottom: solid 1px #d9e2ea;
+        margin-bottom: 30px;
         width:1015px;
     }
     .content-item>.c-title{
@@ -77,5 +98,8 @@
     }
     .c-continue:hover{
         text-decoration: underline;
+    }
+    .el-pagination{
+        text-align: center;
     }
 </style>
