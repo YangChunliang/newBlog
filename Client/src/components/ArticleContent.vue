@@ -5,6 +5,12 @@
             <p>{{ item.description }}</p>
             <a class="c-continue" href="javascript:;">继续阅读 >></a>
         </div>
+        <el-pagination
+                background
+                layout="prev, pager, next"
+                @current-change="handleCurrentChange"
+                :page-count="page_total">
+        </el-pagination>
     </div>
 </template>
 
@@ -14,16 +20,27 @@
         name: "article-content",
         data () {
             return {
-                contentData: []
+                contentData: [],
+                page_total: 0
             }
         },
         mounted(){
-            Axios({
-                method: 'get',
-                url: 'http://localhost:3000/content',
-            }).then((response) => {
-                this.contentData = response.data.content;
-            })
+            this.renderData(1);
+        },
+        methods:{
+            handleCurrentChange(val){
+                this.renderData(val);
+            },
+            renderData(current_page){
+                Axios({
+                    method: 'get',
+                    url: `http://localhost:3000/content?page=${current_page}`,
+                }).then((response) => {
+                    let data = response.data;
+                    this.contentData = data.content;
+                    this.page_total = data.pages;
+                })
+            }
         }
     }
 </script>

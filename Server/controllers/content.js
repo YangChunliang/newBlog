@@ -2,13 +2,13 @@ let Category = require('../models/Category');
 let Content = require('../models/Content');
 const data = {
     category: '',
-    count: '',
-    page: 1,
-    limit: 4,
-    pages: 0
+    count: 0,  //返回的条数
+    page: 0,   //第几页数据
+    limit: 4,  //每页的数据
+    pages: 0   //总页数
 };
 let getContent = async (ctx, next) => {
-    // await next();
+    data.page = Number(ctx.request.query.page) || 1;//前端请求第几页的数据
     //连接数据库获取数据
     //读取所有的分类信息
     let where = {};
