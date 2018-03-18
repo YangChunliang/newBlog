@@ -1,16 +1,28 @@
 <template>
-    <div class="my-view">{{ hai }}</div>
+    <div class="my-view" v-loading="loading">
+        <div class="content-item">
+            <a class="c-title" href="javascript:;">{{ myContent.title }}</a>
+            <p v-html="toHtml"></p>
+            <span class="my-infor">
+                <div>{{ getFormatTime(myContent.addTime) }}</div>
+                <div class="my-view2"><i class="fa fa-eye"></i> {{ myContent.views }} </div>
+            </span>
+        </div>
+        <my-footer></my-footer>
+    </div>
 </template>
 
 <script>
     import Axios from 'axios';
+    import Showdown from 'showdown';
+    import MyFooter from './MyFooter.vue';
     export default {
         name: "my-view",
         data () {
             return {
                 viewId: '',
                 loading: true,
-                hai: ''
+                myContent: ''
             }
         },
         mounted(){
@@ -34,12 +46,24 @@
                     url: `http://localhost:3000/view?contentid=${myId}`,
                 }).then((response) => {
                     let data = response.data;
-                    this.hai = data.content;
+                    this.myContent = data.content;
                     setTimeout(()=>{
                         this.loading = false;
-                    },500);
+                    },100);
                 })
+            },
+            getFormatTime(time_str){
+                time_str += "";
+                return time_str.split("T")[0];
             }
+        },
+        computed: {
+            toHtml: function () {
+                return new Showdown.Converter().makeHtml(this.myContent.content);
+            }
+        },
+        components: {
+            MyFooter
         }
     }
 </script>
@@ -47,5 +71,40 @@
 <style scoped>
     .my-view{
         margin-left: 20vw;
+        padding: 40px 0 30px 38px;
+        display: inline-block;
+    }
+    .content-item{
+        position:relative;
+        border-bottom: solid 1px #d9e2ea;
+        margin-bottom: 30px;
+        width:1015px;
+    }
+    .content-item>.c-title{
+        font-size: 28px;
+        font-weight: 300;
+        color: #333;
+        transition: color .3s;
+    }
+    .content-item>.c-title:hover{
+        color: #337ab7;
+    }
+    .content-item>p{
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+    .my-infor{
+        position:absolute;
+        top:0;
+        right:0;
+        color: #555;
+        font-size: .9em;
+    }
+    .my-view2{
+        text-align: right;
+        margin-top: 10px;
+    }
+    .my-view2>i{
+        color:#2479CC;
     }
 </style>

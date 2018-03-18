@@ -1,7 +1,7 @@
 <template>
     <div class="content" v-loading="loading">
         <div class="content-item" v-for="item in contentData">
-            <a class="c-title" href="javascript:;">{{ item.title }}</a>
+            <a class="c-title" href="javascript:">{{ item.title }}</a>
             <p>{{ item.description }}</p>
             <router-link :to="item.viewId" class="c-continue" >继续阅读 >></router-link>
             <span class="my-infor">
@@ -15,7 +15,7 @@
                 @current-change="handleCurrentChange"
                 :page-count="page_total">
         </el-pagination>
-        <my-footer></my-footer>
+        <my-footer/>
     </div>
 </template>
 
@@ -52,7 +52,7 @@
                     }
                     setTimeout(()=>{
                         this.loading = false;
-                    },500);
+                    },100);
                 })
             },
             getFormatTime(time_str){
@@ -72,7 +72,6 @@
 <style scoped>
     .content{
         padding: 40px 0 30px 38px;
-        /*background-color: #ccc;*/
         display: inline-block;
         margin-left: 20vw;
     }
@@ -117,6 +116,7 @@
     }
     .my-view{
         text-align: right;
+        margin-top: 10px;
     }
     .my-view>i{
         color:#2479CC;

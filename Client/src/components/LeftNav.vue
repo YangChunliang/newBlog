@@ -100,4 +100,7 @@
         margin-top:50px;
         margin-left:40px;
     }
+    li{
+        list-style: none;
+    }
 </style>

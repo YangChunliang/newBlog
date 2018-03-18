@@ -2,9 +2,6 @@
     margin: 0;
     padding:0;
 }
-li{
-    list-style: none;
-}
 img{
     display: block;
 }
@@ -13,3 +10,17 @@ a{
 }
 body{
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;}
+pre{
+    display: inline-block;
+    background-color: #111;
+    color: #fff;
+    padding: 10px 14px;
+    width: 710px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.42857143;
+}
+code {
+    white-space: pre-wrap;
+}
