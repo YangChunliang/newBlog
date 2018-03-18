@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="content" v-loading="loading">
         <div class="content-item" v-for="item in contentData">
             <a class="c-title" href="javascript:;">{{ item.title }}</a>
             <p>{{ item.description }}</p>
@@ -27,7 +27,8 @@
         data () {
             return {
                 contentData: [],
-                page_total: 0
+                page_total: 0,
+                loading: true
             }
         },
         mounted(){
@@ -38,6 +39,7 @@
                 this.renderData(val);
             },
             renderData(current_page){
+                this.loading = true;
                 Axios({
                     method: 'get',
                     url: `http://localhost:3000/content?page=${current_page}`,
@@ -45,6 +47,9 @@
                     let data = response.data;
                     this.contentData = data.content;
                     this.page_total = data.pages;
+                    setTimeout(()=>{
+                        this.loading = false;
+                    },500);
                 })
             },
             getFormatTime(time_str){
@@ -52,10 +57,7 @@
             }
         },
         computed: {
-            // 计算属性的 getter
             reversedMessage: function () {
-                // `this` 指向 vm 实例
-                // return this.message.split('').reverse().join('')
             }
         },
         components: {
