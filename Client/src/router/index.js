@@ -5,6 +5,7 @@ import About from '../components/About.vue'
 import Link from '../components/Link.vue'
 import SpecialTopic from '../components/SpecialTopic.vue'
 import OnFile from '../components/OnFile.vue'
+import MyView from '../components/MyView.vue'
 
 Vue.use(Router);
 
@@ -35,6 +36,11 @@ export default new Router({
             path: '/onfile',
             name: 'OnFile',
             component: OnFile
+        },
+        {
+            path: '/view',
+            name: 'MyView',
+            component: MyView
         }
     ]
 })

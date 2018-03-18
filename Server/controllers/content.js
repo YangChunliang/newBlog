@@ -30,8 +30,22 @@ let getContent = async (ctx, next) => {
         data.content = contents;
         ctx.response.body = data;
     });
+    next();
 };
 
+let getView = async (ctx, next) => {
+    let contentId = ctx.request.query.contentid || '';
+    await Content.findOne({
+        _id: contentId
+    }).then(function(content){
+        data.content = content;
+        content.views++;
+        content.save();
+        ctx.response.body = data;
+    });
+    next();
+}
 module.exports = {
-    'GET /content': getContent
+    'GET /content': getContent, //获取批量文章接口
+    'GET /view': getView   //获取单个文章接口
 };

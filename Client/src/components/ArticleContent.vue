@@ -3,10 +3,10 @@
         <div class="content-item" v-for="item in contentData">
             <a class="c-title" href="javascript:;">{{ item.title }}</a>
             <p>{{ item.description }}</p>
-            <a class="c-continue" href="javascript:;">继续阅读 >></a>
+            <router-link :to="item.viewId" class="c-continue" >继续阅读 >></router-link>
             <span class="my-infor">
                 <div>{{ getFormatTime(item.addTime) }}</div>
-                <div class="my-view">阅读量 : {{ item.views }} </div>
+                <div class="my-view"><i class="fa fa-eye"></i> {{ item.views }} </div>
             </span>
         </div>
         <el-pagination
@@ -47,6 +47,9 @@
                     let data = response.data;
                     this.contentData = data.content;
                     this.page_total = data.pages;
+                    for(let item of this.contentData){
+                        item.viewId = `/view?contentid=${item._id}`;
+                    }
                     setTimeout(()=>{
                         this.loading = false;
                     },500);
@@ -114,5 +117,8 @@
     }
     .my-view{
         text-align: right;
+    }
+    .my-view>i{
+        color:#2479CC;
     }
 </style>
