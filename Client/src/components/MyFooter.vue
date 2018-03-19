@@ -11,17 +11,17 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
     .my-footer{
         text-align: center;
         margin-top: 30px;
         font-size: .9em;
         color: #666;
-    }
-    .my-power>a{
-        color: #337ab7;
-    }
-    .my-footer>.my-power{
-        margin-top: 10px;
+        >.my-power{
+            margin-top: 10px;
+            >a{
+                color: #337ab7;
+            }
+        }
     }
 </style>

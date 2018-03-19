@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import ArticleContent from '../components/ArticleContent.vue'
 import About from '../components/About.vue'
-import Link from '../components/Link.vue'
+import MyLink from '../components/MyLink.vue'
 import SpecialTopic from '../components/SpecialTopic.vue'
 import OnFile from '../components/OnFile.vue'
 import MyView from '../components/MyView.vue'
@@ -23,9 +23,9 @@ export default new Router({
             component: About
         },
         {
-            path: '/link',
-            name: 'Link',
-            component: Link
+            path: '/mylink',
+            name: 'MyLink',
+            component: MyLink
         },
         {
             path: '/specialtopic',

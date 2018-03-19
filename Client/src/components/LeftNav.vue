@@ -33,7 +33,7 @@
                         name: '归档',
                         lei: 'fa fa-apple'
                     },{
-                        href: '/link',
+                        href: '/mylink',
                         name: '友链',
                         lei: 'fa fa-link'
                     },{
@@ -58,7 +58,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
     .left-nav{
         width:20vw;
         height:100vh;
@@ -66,41 +66,38 @@
         top:0;
         left:0;
         background:url("../../static/img/my-bgcnav.png");
-    }
-    .left-header{
-        width: 130px;
-        border-radius: 50%;
-        margin: 30px auto 0;
-    }
-    .left-name{
-        font-size: 22px;
-        text-align: center;
-        color: #499ae2;
-        margin-top: 10px;
-        margin-bottom: 5px;
-    }
-    .left-infor{
-        color: #a0b3c3;
-        text-align: center;
-        font-size: 15px;
-    }
-    .left-item {
-        text-align: center;
-        margin-top: 10px;
-        /*color:#499ae2;*/
-    }
-    .left-item>a{
-        color:#499ae2;
-    }
-    .left-item>a:hover{
-        text-shadow: 1px 1px #e4bebe;
-    }
-    .fish-move{
-        width:60%;
-        margin-top:50px;
-        margin-left:40px;
-    }
-    li{
-        list-style: none;
+        .left-header{
+            width: 130px;
+            border-radius: 50%;
+            margin: 30px auto 0;
+        }
+        .left-name{
+            font-size: 22px;
+            text-align: center;
+            color: #499ae2;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .left-infor{
+            color: #a0b3c3;
+            text-align: center;
+            font-size: 15px;
+        }
+        .fish-move{
+            width:60%;
+            margin-top:50px;
+            margin-left:40px;
+        }
+        .left-item {
+            text-align: center;
+            margin-top: 10px;
+            list-style: none;
+            >a{
+                color:#499ae2;
+                &:hover{
+                    text-shadow: 1px 1px #e4bebe;
+                }
+            }
+        }
     }
 </style>

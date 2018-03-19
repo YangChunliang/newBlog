@@ -1,5 +1,7 @@
-let path = require('path');
-let webpack = require('webpack');
+// let path = require('path');
+// let webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
 
 module.exports = {
     entry: {
@@ -24,6 +26,10 @@ module.exports = {
         {
             test: /\.css$/,
             use: ['style-loader', 'css-loader', 'postcss-loader']
+        },
+        {
+            test: /\.less/,
+            use: ['style-loader', 'css-loader', 'less-loader']
         },
         {
             test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
@@ -51,10 +57,10 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map'
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
+  module.exports.devtool = '#source-map';
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({

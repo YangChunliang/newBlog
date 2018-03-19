@@ -68,7 +68,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
     .my-view{
         margin-left: 20vw;
         padding: 40px 0 30px 38px;
@@ -79,32 +79,32 @@
         border-bottom: solid 1px #d9e2ea;
         margin-bottom: 30px;
         width:1015px;
-    }
-    .content-item>.c-title{
-        font-size: 28px;
-        font-weight: 300;
-        color: #333;
-        transition: color .3s;
-    }
-    .content-item>.c-title:hover{
-        color: #337ab7;
-    }
-    .content-item>p{
-        margin-top: 25px;
-        margin-bottom: 20px;
-    }
-    .my-infor{
-        position:absolute;
-        top:0;
-        right:0;
-        color: #555;
-        font-size: .9em;
-    }
-    .my-view2{
-        text-align: right;
-        margin-top: 10px;
-    }
-    .my-view2>i{
-        color:#2479CC;
+        >.c-title{
+            font-size: 28px;
+            font-weight: 300;
+            color: #333;
+            transition: color .3s;
+            &:hover{
+                color: #337ab7;
+            }
+        }
+        >p{
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+        .my-infor{
+            position:absolute;
+            top:0;
+            right:0;
+            color: #555;
+            font-size: .9em;
+            .my-view2{
+                text-align: right;
+                margin-top: 10px;
+                >i{
+                    color:#2479CC;
+                }
+            }
+        }
     }
 </style>

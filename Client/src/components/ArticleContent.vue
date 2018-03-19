@@ -4,10 +4,10 @@
             <a class="c-title" href="javascript:">{{ item.title }}</a>
             <p>{{ item.description }}</p>
             <router-link :to="item.viewId" class="c-continue" >继续阅读 >></router-link>
-            <span class="my-infor">
+            <div class="my-infor">
                 <div>{{ getFormatTime(item.addTime) }}</div>
                 <div class="my-view"><i class="fa fa-eye"></i> {{ item.views }} </div>
-            </span>
+            </div>
         </div>
         <el-pagination
                 background
@@ -60,8 +60,6 @@
             }
         },
         computed: {
-            reversedMessage: function () {
-            }
         },
         components: {
             MyFooter
@@ -69,56 +67,57 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
     .content{
         padding: 40px 0 30px 38px;
         display: inline-block;
         margin-left: 20vw;
-    }
-    .content-item{
-        position:relative;
-        border-bottom: solid 1px #d9e2ea;
-        margin-bottom: 30px;
-        width:1015px;
-    }
-    .content-item>.c-title{
-        font-size: 28px;
-        font-weight: 300;
-        color: #333;
-        transition: color .3s;
-    }
-    .content-item>.c-title:hover{
-        color: #337ab7;
-    }
-    .content-item>p{
-        margin-top: 25px;
-        margin-bottom: 20px;
-    }
-    .c-continue{
-        display: inline-block;
-        color: #2479CC;
-        font-size: 15px;
-        transition: color .3s;
-        margin-bottom: 20px;
-    }
-    .c-continue:hover{
-        text-decoration: underline;
-    }
-    .el-pagination{
-        text-align: center;
-    }
-    .my-infor{
-        position:absolute;
-        top:0;
-        right:0;
-        color: #555;
-        font-size: .9em;
-    }
-    .my-view{
-        text-align: right;
-        margin-top: 10px;
-    }
-    .my-view>i{
-        color:#2479CC;
+        .content-item{
+            position:relative;
+            border-bottom: solid 1px #d9e2ea;
+            margin-bottom: 30px;
+            width:1015px;
+            >.c-title{
+                font-size: 28px;
+                font-weight: 300;
+                color: #333;
+                transition: color .3s;
+                &:hover{
+                    color: #337ab7;
+                }
+            }
+            >p{
+                margin-top: 25px;
+                margin-bottom: 20px;
+            }
+            .c-continue{
+                display: inline-block;
+                color: #2479CC;
+                font-size: 15px;
+                transition: color .3s;
+                margin-bottom: 20px;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+            .my-infor{
+                display: inline-block;
+                position:absolute;
+                top:0;
+                right:0;
+                color: #555;
+                font-size: .9em;
+                .my-view{
+                    text-align: right;
+                    margin-top: 10px;
+                    >i{
+                        color:#2479CC;
+                    }
+                }
+            }
+        }
+        .el-pagination{
+            text-align: center;
+        }
     }
 </style>
