@@ -1,6 +1,6 @@
 <template>
     <div class="on-file">
-        这是归档页
+        <div>归档：待整理</div>
     </div>
 </template>
 
@@ -10,6 +10,12 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+    .on-file{
+        padding: 40px 0 30px 38px;
+        display: inline-block;
+        width:1015px;
+        margin-left: 20vw;
+        /*background-color: #ccc;*/
+    }
 </style>

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import router from './router'
 import Back from './Back.vue'
-import common from  '../static/css/common.css'
+import common from '../static/css/common.less'
 
 new Vue({
     el: '#my-back',

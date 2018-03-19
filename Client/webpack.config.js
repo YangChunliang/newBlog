@@ -1,7 +1,5 @@
-// let path = require('path');
-// let webpack = require('webpack');
-import path from 'path';
-import webpack from 'webpack';
+let path = require('path');
+let webpack = require('webpack');
 
 module.exports = {
     entry: {

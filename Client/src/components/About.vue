@@ -1,6 +1,6 @@
 <template>
     <div class="my-about">
-        这是关于页面
+        <div>关于：待整理</div>
     </div>
 </template>
 
@@ -10,6 +10,11 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+    .my-about{
+        padding: 40px 0 30px 38px;
+        display: inline-block;
+        width:1015px;
+        margin-left: 20vw;
+    }
 </style>

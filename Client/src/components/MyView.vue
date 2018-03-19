@@ -1,7 +1,7 @@
 <template>
     <div class="my-view" v-loading="loading">
         <div class="content-item">
-            <a class="c-title" href="javascript:;">{{ myContent.title }}</a>
+            <h2 class="c-title">{{ myContent.title }}</h2>
             <p v-html="toHtml"></p>
             <span class="my-infor">
                 <div>{{ getFormatTime(myContent.addTime) }}</div>
@@ -73,36 +73,27 @@
         margin-left: 20vw;
         padding: 40px 0 30px 38px;
         display: inline-block;
-    }
-    .content-item{
-        position:relative;
-        border-bottom: solid 1px #d9e2ea;
-        margin-bottom: 30px;
-        width:1015px;
-        >.c-title{
-            font-size: 28px;
-            font-weight: 300;
-            color: #333;
-            transition: color .3s;
-            &:hover{
-                color: #337ab7;
+        .content-item{
+            position:relative;
+            border-bottom: solid 1px #d9e2ea;
+            margin-bottom: 30px;
+            width:1015px;
+            >p{
+                margin-top: 25px;
+                margin-bottom: 20px;
             }
-        }
-        >p{
-            margin-top: 25px;
-            margin-bottom: 20px;
-        }
-        .my-infor{
-            position:absolute;
-            top:0;
-            right:0;
-            color: #555;
-            font-size: .9em;
-            .my-view2{
-                text-align: right;
-                margin-top: 10px;
-                >i{
-                    color:#2479CC;
+            .my-infor{
+                position:absolute;
+                top:0;
+                right:0;
+                color: #555;
+                font-size: .9em;
+                .my-view2{
+                    text-align: right;
+                    margin-top: 10px;
+                    >i{
+                        color:#2479CC;
+                    }
                 }
             }
         }
