@@ -37,6 +37,10 @@
                     {
                         name: 'w3cplus',
                         mLink: 'https://www.w3cplus.com/'
+                    },
+                    {
+                        name: 'My Github',
+                        mLink: 'https://github.com/YangChunliang'
                     }
                 ]
             }
@@ -50,8 +54,13 @@
         display: inline-block;
         width:1015px;
         margin-left: 20vw;
-        a{
-            color: #499ae2;
+        ul{
+            li{
+                margin-top: 10px;
+                a{
+                    color: #499ae2;
+                }
+            }
         }
     }
 </style>
