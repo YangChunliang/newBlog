@@ -49,7 +49,9 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    overlay: true
+    overlay: true,
+    host: 'ycl.sina.com.cn',
+    port: '8080'
   },
   performance: {
     hints: false
