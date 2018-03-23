@@ -1,9 +1,10 @@
 <template>
     <div class="my-login" v-show="flag">
+        <img class="login-bg" src="../../static/img/login-bg.jpg" alt="">
         <div class="my-box">
-            <input type="text" v-model="user" placeholder="用户名">
-            <input type="password" v-model="psw" placeholder="密码">
-            <button @click="isAdmin">登录</button>
+            <input class="my-input" type="text" v-model="user" placeholder="用户名">
+            <input class="my-input" type="password" v-model="psw" placeholder="密码"><br>
+            <div class="sub" @click="isAdmin">登录</div>
         </div>
     </div>
 </template>
@@ -48,17 +49,46 @@
     .my-login{
         width:100vw;
         height:100vh;
-        background-color: #a0c3ec;
         position: absolute;
     }
     .my-box{
         width:300px;
-        height:300px;
         background-color: #fff;
         position: absolute;
         top: 50%;
         left: 50%;
         margin-left:-150px;
         margin-top:-150px;
+        border-radius: 5px;
+        padding-bottom:20px;
+        border:solid #dee6de 1px;
+        box-shadow: #ccc 4px 4px ;
+    }
+    .my-input{
+        display: block;
+        width: 240px;
+        height: 32px;
+        border-radius: 3px;
+        margin: 20px auto 0;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+    .sub{
+        cursor: pointer;
+        width: 140px;
+        height: 30px;
+        border-radius: 3px;
+        margin: 0px auto;
+        background-color: #65d062;
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+    }
+    .sub:hover{
+        background-color: #44b944;
+    }
+    .login-bg{
+        width:100%;
+        height:100%;
     }
 </style>

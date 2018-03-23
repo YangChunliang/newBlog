@@ -51,7 +51,7 @@ module.exports = {
     noInfo: true,
     overlay: true,
     host: 'ycl.sina.com.cn',
-    port: '8080'
+    port: '80'
   },
   performance: {
     hints: false
