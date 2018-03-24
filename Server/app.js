@@ -6,11 +6,14 @@ const controller = require('./controller');
 
 const cors = require('koa-cors');
 
+const serve = require("koa-static");
+
 //加载数据库模块
 const mongoose = require('mongoose');
 
 const app = new Koa();
 
+app.use(serve('./html'));
 // log request URL:
 app.use(async (ctx, next) => {
     console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
@@ -26,7 +29,7 @@ app.use(bodyParser());
 app.use(controller());
 
 //连接数据库
-mongoose.connect('mongodb://younger:我的密码@139.199.14.15:27027/Blog?authSource=admin',function(err){
+mongoose.connect('mongodb://younger:ycl251318@139.199.14.15:27027/Blog?authSource=admin',function(err){
     if (err) {
         console.log("database connect defeat");
     }else {

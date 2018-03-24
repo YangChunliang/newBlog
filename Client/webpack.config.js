@@ -7,7 +7,7 @@ module.exports = {
         back: './src/back_main.js'
     },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../Server/html/dist'),
     publicPath: '/dist/',
     filename: '[name].build.js'
   },
