@@ -38,7 +38,7 @@ export default new Router({
             component: OnFile
         },
         {
-            path: '/view',
+            path: '/detail/:view_id',
             name: 'MyView',
             component: MyView
         }

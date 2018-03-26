@@ -21,7 +21,6 @@
         name: "my-view",
         data () {
             return {
-                viewId: '',
                 loading: true,
                 myContent: ''
             }
@@ -105,24 +104,14 @@
                 appid: 'cytwyrlgH',
                 conf: 'prod_66d07e30552a154c26970b765bbfd772'
             });
-            this.viewId = this.getUrlArgu("contentid");
-            this.renderData(this.viewId);
+            this.renderData();
         },
         methods:{
-            getUrlArgu(name){//获取URL中的参数
-                let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); // 匹配目标参数
-                let result = window.location.search.substr(1).match(reg); // 对querystring匹配目标参数
-                if (result != null) {
-                    return decodeURIComponent(result[2]);
-                } else {
-                    return null;
-                }
-            },
-            renderData(myId){
+            renderData(){
                 this.loading = true;
                 Axios({
                     method: 'get',
-                    url: `http://localhost:3000/view?contentid=${myId}`,
+                    url: `/view?contentid=${this.$route.params.view_id}`,
                 }).then((response) => {
                     let data = response.data;
                     this.myContent = data.content;

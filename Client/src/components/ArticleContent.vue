@@ -42,13 +42,13 @@
                 this.loading = true;
                 Axios({
                     method: 'get',
-                    url: `http://localhost:3000/content?page=${current_page}`,
+                    url: `/content?page=${current_page}`,
                 }).then((response) => {
                     let data = response.data;
                     this.contentData = data.content;
                     this.page_total = data.pages;
                     for(let item of this.contentData){
-                        item.viewId = `/view?contentid=${item._id}`;
+                        item.viewId = `/detail/${item._id}`;
                     }
                     setTimeout(()=>{
                         this.loading = false;

@@ -8,6 +8,8 @@ const cors = require('koa-cors');
 
 const serve = require("koa-static");
 
+const fs = require('fs');
+
 //加载数据库模块
 const mongoose = require('mongoose');
 
@@ -19,6 +21,18 @@ app.use(async (ctx, next) => {
     console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
     await next();
 });
+//找不到对用资源时返回index.html
+// app.use(async (ctx, next) => {
+//     fs.readFile('./html/index.html', 'utf-8', (err, content) => {
+//         if (err) {
+//             console.log('We cannot open "index.html" file.')
+//         }
+//         ctx.response.status = 200;
+//         ctx.response.type = 'text/html,charset=utf-8';
+//         ctx.response.body = content;
+//     });
+//     await next();
+// });
 
 app.use(cors());
 

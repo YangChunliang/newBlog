@@ -1,6 +1,5 @@
 <template>
     <div class="my-login" v-show="flag">
-        <img class="login-bg" src="../../static/img/login-bg.jpg" alt="">
         <div class="my-box">
             <input class="my-input" type="text" v-model="user" placeholder="用户名">
             <input class="my-input" type="password" v-model="psw" placeholder="密码"><br>
@@ -30,7 +29,7 @@
                 //调用接口，验证用户名与密码
                 Axios({
                     method: 'post',
-                    url: 'http://localhost:3000/login',
+                    url: '/login',
                     data:{
                         user: this.user,
                         psw: this.psw
@@ -50,6 +49,7 @@
         width:100vw;
         height:100vh;
         position: absolute;
+        background-color: #64de64;
     }
     .my-box{
         width:300px;
@@ -86,9 +86,5 @@
     }
     .sub:hover{
         background-color: #44b944;
-    }
-    .login-bg{
-        width:100%;
-        height:100%;
     }
 </style>
