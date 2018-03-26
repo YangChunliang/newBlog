@@ -15,6 +15,7 @@ pre{
     background-color: #111;
     color: #fff;
     padding: 10px 14px;
+    margin: 10px 0;
     width: 710px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -24,7 +25,7 @@ pre{
 code {
     white-space: pre-wrap;
 }
-p>code{
+p>code,li>code{
     padding: 2px 3px 2px 3px;
     color: #c7254e;
     background: #f9f2f4;
@@ -33,6 +34,21 @@ p>code{
     font-family: Consolas,"Courier New",Courier,FreeMono,monospace;
     border-radius: 2px;
     line-height: 1.3rem;
+}
+.view-txt li{
+  width:710px;
+}
+.view-txt a{
+  color:#499ae2;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+p>ul>li{
+  margin-left: 40px;
+}
+p>ul>li>ul{
+  margin-left: 20px;
 }
 h2{
     font-size: 30px;

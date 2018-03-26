@@ -2,7 +2,7 @@
     <div class="my-view" v-loading="loading">
         <div class="content-item">
             <h2 class="c-title">{{ myContent.title }}</h2>
-            <p v-html="toHtml"></p>
+            <p class="view-txt" v-html="toHtml"></p>
             <span class="my-infor">
                 <div>{{ getFormatTime(myContent.addTime) }}</div>
                 <div class="my-view2"><i class="fa fa-eye"></i> {{ myContent.views }} </div>
@@ -111,7 +111,7 @@
                 this.loading = true;
                 Axios({
                     method: 'get',
-                    url: `/view?contentid=${this.$route.params.view_id}`,
+                    url: `http://localhost:3000/view?contentid=${this.$route.params.view_id}`,
                 }).then((response) => {
                     let data = response.data;
                     this.myContent = data.content;
@@ -150,6 +150,7 @@
             >p{
                 margin-top: 25px;
                 margin-bottom: 20px;
+                line-height:1.5rem;
             }
             .my-infor{
                 position:absolute;

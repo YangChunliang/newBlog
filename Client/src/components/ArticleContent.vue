@@ -42,7 +42,7 @@
                 this.loading = true;
                 Axios({
                     method: 'get',
-                    url: `/content?page=${current_page}`,
+                    url: `http://localhost:3000/content?page=${current_page}`,
                 }).then((response) => {
                     let data = response.data;
                     this.contentData = data.content;
