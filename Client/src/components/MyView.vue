@@ -8,7 +8,7 @@
                 <div class="my-view2"><i class="fa fa-eye"></i> {{ myContent.views }} </div>
             </span>
         </div>
-        <div id="SOHUCS" :sid="viewId"></div>
+        <div id="SOHUCS" :sid="this.$route.params.view_id"></div>
         <my-footer></my-footer>
     </div>
 </template>
@@ -111,7 +111,7 @@
                 this.loading = true;
                 Axios({
                     method: 'get',
-                    url: `http://localhost:3000/view?contentid=${this.$route.params.view_id}`,
+                    url: `/view?contentid=${this.$route.params.view_id}`,
                 }).then((response) => {
                     let data = response.data;
                     this.myContent = data.content;

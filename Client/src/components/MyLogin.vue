@@ -29,7 +29,7 @@
                 //调用接口，验证用户名与密码
                 Axios({
                     method: 'post',
-                    url: 'http://localhost:3000/login',
+                    url: '/login',
                     data:{
                         user: this.user,
                         psw: this.psw
