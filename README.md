@@ -20,3 +20,4 @@ npm run dev
 #### 如何定义接口为子域名？
 #### 引入koa2-connect-history-api-fallback解决history模式弊端
 #### vue异步组件配合webpack代码分割功能实现懒加载
+#### 单页面一直存在的问题：SEO和初次加载耗时较多的问题。
