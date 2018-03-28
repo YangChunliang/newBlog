@@ -13,6 +13,8 @@ const MyLink = () => import('../components/MyLink.vue');
 const SpecialTopic = () => import('../components/SpecialTopic.vue');
 const OnFile = () => import('../components/OnFile.vue');
 const MyView = () => import('../components/MyView.vue');
+const HouTai = () => import('../components/HouTai.vue');
+const LeftNav = () => import('../components/LeftNav.vue');
 
 Vue.use(Router);
 
@@ -22,32 +24,58 @@ export default new Router({
         {
             path: '/',
             name: 'ArticleContent',
-            component: ArticleContent
+            components: {
+                default: LeftNav,
+                nav: ArticleContent
+            }
         },
         {
             path: '/about',
             name: 'About',
-            component: About
+            components: {
+                default: LeftNav,
+                nav: About
+            }
         },
         {
             path: '/mylink',
             name: 'MyLink',
-            component: MyLink
+            components: {
+                default: LeftNav,
+                nav: MyLink
+            }
         },
         {
             path: '/specialtopic',
             name: 'SpecialTopic',
-            component: SpecialTopic
+            components: {
+                default: LeftNav,
+                nav: SpecialTopic
+            }
         },
         {
             path: '/onfile',
             name: 'OnFile',
-            component: OnFile
+            components: {
+                default: LeftNav,
+                nav: OnFile
+            }
         },
         {
             path: '/detail/:view_id',
             name: 'MyView',
-            component: MyView
+            components: {
+                default: LeftNav,
+                nav: MyView
+            }
+        },
+        {
+            path: '/houtai',
+            name: 'HouTai',
+            components: {
+                default: "",
+                nav: HouTai
+            }
         }
     ]
 })

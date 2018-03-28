@@ -2,15 +2,12 @@ let path = require('path');
 let webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        main: './src/main.js',
-        back: './src/back_main.js'
+    entry: './src/main.js',
+    output: {
+        path: path.resolve(__dirname, '../Server/html/dist'),
+        publicPath: '/dist/',
+        filename: 'main.build.js'
     },
-  output: {
-    path: path.resolve(__dirname, '../Server/html/dist'),
-    publicPath: '/dist/',
-    filename: '[name].build.js'
-  },
     module: {
         rules: [{
             test: /\.vue$/,
@@ -56,7 +53,7 @@ module.exports = {
   performance: {
     hints: false
   },
-  //devtool: '#eval-source-map'
+  // devtool: '#eval-source-map'
   devtool: false
 };
 

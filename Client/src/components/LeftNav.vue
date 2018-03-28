@@ -8,7 +8,6 @@
                 <router-link :to="item.href"><i :class="item.lei"></i> {{item.name}}</router-link>
             </li>
         </ul>
-        <li class="left-item"><a href="/backManage.html"><i class="fa fa-cog fa-spin"></i> 设置</a></li>
         <img class="fish-move" src="../../static/img/fish-move.gif" alt="">
     </div>
 </template>
@@ -40,6 +39,10 @@
                         href: '/about',
                         name: '关于',
                         lei: 'fa fa-gitlab'
+                    },{
+                        href: '/houtai',
+                        name: '管理',
+                        lei: 'fa fa-cog fa-spin'
                     }
                 ]
             }
