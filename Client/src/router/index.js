@@ -1,11 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import ArticleContent from '../components/ArticleContent.vue'
-// import About from '../components/About.vue'
-// import MyLink from '../components/MyLink.vue'
-// import SpecialTopic from '../components/SpecialTopic.vue'
-// import OnFile from '../components/OnFile.vue'
-// import MyView from '../components/MyView.vue'
 
 const ArticleContent = () => import('../components/ArticleContent.vue');
 const About = () => import('../components/About.vue');
@@ -13,8 +7,14 @@ const MyLink = () => import('../components/MyLink.vue');
 const SpecialTopic = () => import('../components/SpecialTopic.vue');
 const OnFile = () => import('../components/OnFile.vue');
 const MyView = () => import('../components/MyView.vue');
-const HouTai = () => import('../components/HouTai.vue');
+const BackManage = () => import('../components/BackManage.vue');
 const LeftNav = () => import('../components/LeftNav.vue');
+const ContentList = () => import('../components/ContentList');
+const ContentAdd = () => import('../components/ContentAdd');
+const CategoryList = () => import('../components/CategoryList');
+const CategoryAdd = () => import('../components/CategoryAdd');
+const PersonalCenter = () => import('../components/PersonalCenter');
+const MyBase = () => import('../components/MyBase');
 
 Vue.use(Router);
 
@@ -70,12 +70,38 @@ export default new Router({
             }
         },
         {
-            path: '/houtai',
-            name: 'HouTai',
+            path: '/manage',
+            name: 'BackManage',
             components: {
                 default: "",
-                nav: HouTai
-            }
+                nav: BackManage
+            },
+            children: [
+                {
+                    path: 'content_list',
+                    component: ContentList
+                },
+                {
+                    path: 'content_add',
+                    component: ContentAdd
+                },
+                {
+                    path: 'category_list',
+                    component: CategoryList
+                },
+                {
+                    path: 'category_add',
+                    component: CategoryAdd
+                },
+                {
+                    path: 'personal_center',
+                    component: PersonalCenter
+                },
+                {
+                    path: '',
+                    component: MyBase
+                }
+            ]
         }
     ]
 })

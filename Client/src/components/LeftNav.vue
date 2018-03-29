@@ -40,7 +40,7 @@
                         name: '关于',
                         lei: 'fa fa-gitlab'
                     },{
-                        href: '/houtai',
+                        href: '/manage',
                         name: '管理',
                         lei: 'fa fa-cog fa-spin'
                     }

@@ -29,7 +29,7 @@
                 //调用接口，验证用户名与密码
                 Axios({
                     method: 'post',
-                    url: '/login',
+                    url: 'http://localhost:3000/login',
                     data:{
                         user: this.user,
                         psw: this.psw
@@ -49,6 +49,8 @@
         width:100vw;
         height:100vh;
         position: absolute;
+        top:0;
+        left:0;
         background-color: #64de64;
     }
     .my-box{
