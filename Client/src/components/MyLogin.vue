@@ -35,8 +35,10 @@
                         psw: this.psw
                     }
                 }).then((res) => {
-                    if(res.data.result.isAdmin === true){
+                    if(res.data.code === 0){
                         this.$emit("ok");
+                    }else{
+                        alert("密码错误");
                     }
                 });
             }

@@ -17,6 +17,7 @@
         "url": "https://github.com/YangChunliang"
     },
     "dependencies": {
+        "cookies": "^0.7.1",
         "fs":"^0.0.1-security",
         "koa": "2.0.0",
         "koa-bodyparser": "3.2.0",

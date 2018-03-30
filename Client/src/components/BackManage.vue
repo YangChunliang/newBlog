@@ -1,6 +1,6 @@
 <template>
     <div class="hou-tai">
-        <back-nav></back-nav>
+        <back-nav :username="name"></back-nav>
         <my-login :flag="isAdmin" @ok="loginPass"></my-login>
         <router-view></router-view>
     </div>
@@ -9,6 +9,7 @@
 <script>
     import MyLogin from './MyLogin.vue'
     import BackNav from './BackNav.vue'
+    import Axios from 'axios'
     export default {
         name: "houtai",
         components:{
@@ -17,16 +18,45 @@
         },
         data(){
             return{
-                isAdmin: true
+                name: '亮哥',
+                isAdmin: false
             }
+        },
+        mounted: function(){
+            this.isLogin();
         },
         methods: {
             loginPass(){
                 this.isAdmin = false;
+                Axios({
+                    method: 'get',
+                    url: 'http://localhost:3000/islogin',
+                    data:{}
+                }).then((res) => {
+                    if(res.data.code === 0){
+                        this.name = res.data.username;
+                    }
+                });
+            },
+            isLogin(){
+                //调用接口，查看是否已经登录
+                Axios({
+                    method: 'get',
+                    url: 'http://localhost:3000/islogin',
+                    data:{}
+                }).then((res) => {
+                    if(res.data.code === 0){
+                        this.name = res.data.username;
+                    }else{
+                        this.isAdmin = true;
+                    }
+                });
             }
         }
 
     }
+//    首次进入->验证cookie是否存在->登录账户->存入cookie->验证cookie是否存在
+//    再次进入->验证cookie是否存在
 </script>
 
 <style scoped>

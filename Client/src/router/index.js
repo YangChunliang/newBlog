@@ -71,7 +71,7 @@ export default new Router({
         },
         {
             path: '/manage',
-            name: 'BackManage',
+            // name: 'BackManage',
             components: {
                 default: "",
                 nav: BackManage
