@@ -32,12 +32,20 @@ app.use(historyApiFallback());
 app.use(serve('./html'));
 
 //连接数据库
-mongoose.connect('mongodb://younger:ycl251318@139.199.14.15:27027/Blog?authSource=admin',function(err){
-    if (err) {
-        console.log("database connect defeat");
-    }else {
-        console.log("database connect success")
-    }
+
+// mongoose.connect('mongodb://younger:ycl251318@139.199.14.15:27027/Blog?authSource=admin',function(err){
+//     if (err) {
+//         console.log("database connect defeat");
+//     }else {
+//         console.log("database connect success")
+//     }
+// });
+mongoose.connect('mongodb://localhost:27017/Blog',function(err){
+  if (err) {
+    console.log("database connect defeat");
+  }else {
+    console.log("database connect success")
+  }
 });
 
 app.listen(3000);

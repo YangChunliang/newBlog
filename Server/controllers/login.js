@@ -11,6 +11,7 @@ let fn_login = async (ctx, next) => {
     }).then(function(userInfo){
         if (userInfo) {
             ctx.cookies.set('userName', userInfo.username);
+            ctx.cookies.set('userId', userInfo._id);
         }else{
             responseData.message = "密码错误!";
             responseData.code = 1;
@@ -21,10 +22,12 @@ let fn_login = async (ctx, next) => {
 };
 let is_login = async (ctx, next) => {
     const objJson = {code:1};
-    let str = ctx.cookies.get('userName');
-    if(str){
+    let name = ctx.cookies.get('userName');
+    let userid = ctx.cookies.get('userId');
+    if(name){
         objJson.code = 0;
-        objJson.username = str;
+        objJson.username = name;
+        objJson.id = userid;
     }
     ctx.response.body = objJson;
     await next();

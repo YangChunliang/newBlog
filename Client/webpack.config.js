@@ -47,14 +47,14 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     overlay: true,
-    // host: 'ycl.springmoon.cn',
-    // port: '8080'
+    host: 'ycl.springmoon.cn',
+    port: '80'
   },
   performance: {
     hints: false
   },
-  // devtool: '#eval-source-map'
-  devtool: false
+  devtool: '#eval-source-map'
+  // devtool: false
 };
 
 if (process.env.NODE_ENV === 'production') {

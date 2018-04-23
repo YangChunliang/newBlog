@@ -68,7 +68,7 @@
         position: fixed;
         top:0;
         left:0;
-        background-color: #a3a3da;
+        background: url("../../static/img/my-bgcnav.png");
         .left-header{
             width: 130px;
             border-radius: 50%;
@@ -77,12 +77,12 @@
         .left-name{
             font-size: 22px;
             text-align: center;
-            color: #ffffff;
+            color: #2479CC;
             margin-top: 10px;
             margin-bottom: 5px;
         }
         .left-infor{
-            color: #fff;
+            color: #799897;
             text-align: center;
             font-size: 15px;
         }
@@ -96,7 +96,7 @@
             margin-top: 10px;
             list-style: none;
             >a{
-                color:#fff;
+                color:#489ff3;
                 &:hover{
                     text-shadow: 1px 1px #e4bebe;
                 }

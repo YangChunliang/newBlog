@@ -54,6 +54,7 @@
         top:0;
         left:0;
         background-color: #64de64;
+        z-index: 1000;
     }
     .my-box{
         width:300px;

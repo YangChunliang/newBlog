@@ -2,7 +2,7 @@
     <div class="hou-tai">
         <back-nav :username="name"></back-nav>
         <my-login :flag="isAdmin" @ok="loginPass"></my-login>
-        <router-view></router-view>
+        <router-view :userid="myId"></router-view>
     </div>
 </template>
 
@@ -19,7 +19,8 @@
         data(){
             return{
                 name: '亮哥',
-                isAdmin: false
+                isAdmin: false,
+                myId: ''
             }
         },
         mounted: function(){
@@ -35,6 +36,8 @@
                 }).then((res) => {
                     if(res.data.code === 0){
                         this.name = res.data.username;
+                        this.id = res.data.id;
+                        console.log(res.data);
                     }
                 });
             },
@@ -47,6 +50,8 @@
                 }).then((res) => {
                     if(res.data.code === 0){
                         this.name = res.data.username;
+                        this.id = res.data.id;
+                        console.log(res.data);
                     }else{
                         this.isAdmin = true;
                     }

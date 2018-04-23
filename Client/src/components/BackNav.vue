@@ -1,8 +1,8 @@
 <template>
     <div class="back-nav">
         <div class="login-infor">
-            <span>{{username}}</span>
-            <button @click = 'loginOut'>退出</button>
+            <div class="user-info">{{username}}</div>
+            <div class="out-login" @click = 'loginOut'>退出</div>
         </div>
         <el-menu
                 default-active="2"
@@ -68,10 +68,10 @@
                 });
             },
             handleOpen(key, keyPath) {
-                console.log(key, keyPath);
+                // console.log(key, keyPath);
             },
             handleClose(key, keyPath) {
-                console.log(key, keyPath);
+                // console.log(key, keyPath);
             }
         }
     }
@@ -80,5 +80,39 @@
 <style scoped lang="less">
     .back-nav{
         width:200px;
+        float: left;
+        margin-left: 25px;
+        span{
+            font-size: 21px;
+            font-family: KaiTi;
+        }
+        .fa{
+            margin-right: 5px;
+            font-size: 18px;
+        }
+        .login-infor{
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-bottom: 10px;
+            .user-info{
+                font-size: 24px;
+                font-family: KaiTi;
+                display: inline-block;
+                height: 30px;
+            }
+            .out-login{
+                display: inline-block;
+                cursor: pointer;
+                color: #938fce;
+                margin-left: 10px;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    li.el-menu-item{
+        margin-left: 20px;
+        min-width: 180px;
     }
 </style>
