@@ -55,8 +55,29 @@ let getCategory = async(ctx, next) => {
     });
     next();
 };
+
+let addContent = async(ctx, next) => {
+    let userId = ctx.request.body.userId;
+    let category = ctx.request.body.category;
+    let title = ctx.request.body.title;
+    let desc = ctx.request.body.desc;
+    let txtBefore = ctx.request.body.txtBefore;
+    await new Content({
+        category: category,
+        title: title,
+        user:userId,
+        description: desc,
+        content: txtBefore,
+        addTime: new Date()
+    }).save().then(function(){
+        ctx.response.body = {
+            status: 0
+        };
+    });
+};
 module.exports = {
     'GET /content': getContent, //获取批量文章接口
     'GET /view': getView,   //获取单个文章接口
-    'GET /category': getCategory //获取全部分类
+    'GET /category': getCategory, //获取全部分类
+    'POST /addContent': addContent //新增文章
 };

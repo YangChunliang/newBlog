@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { Pagination,Loading, Menu, MenuItem, MenuItemGroup, Submenu,
-    Select, Option, Table, TableColumn, Tag, Button,Input} from 'element-ui';
+    Select, Option, Table, TableColumn, Tag, Button,Input, Notification } from 'element-ui';
 import router from './router'
 import App from './Index.vue'
 import '../static/css/common.less'
@@ -18,6 +18,7 @@ Vue.use(TableColumn);
 Vue.use(Tag);
 Vue.use(Button);
 Vue.use(Input);
+Vue.prototype.$notify = Notification;
 Vue.config.productionTip = false;
 new Vue({
     el: '#app',

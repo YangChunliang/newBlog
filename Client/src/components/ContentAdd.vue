@@ -10,16 +10,17 @@
             </el-option>
         </el-select>
         <el-input v-model="title" placeholder="请输入文章标题" style="width: 600px;margin-left: 30px;"></el-input>
-        <textarea name="" id="my-desc" cols="110" rows="7" placeholder="请输入文章简介"></textarea>
+        <textarea name="" v-model="desc" id="my-desc" cols="110" rows="7" placeholder="请输入文章简介"></textarea>
         <br>
-        <textarea name="" id="my-content" cols="70" rows="28" placeholder="原始内容"></textarea>
-        <textarea name="" id="" cols="70" rows="28" placeholder="转义内容"></textarea><br>
+        <textarea name="" id="my-content" v-model="txtBefore" @keyup="txtChange" cols="70" rows="28" placeholder="原始内容"></textarea>
+        <div class="txt-after" v-html="txtAfter"></div>
         <el-button type="primary" @click="formSub">提交</el-button>
     </div>
 </template>
 
 <script>
     import Axios from 'axios';
+    import Showdown from 'showdown';
     export default {
         name: "content-add",
         props:["userid"],
@@ -28,7 +29,10 @@
                 myContent: '',
                 options: [],
                 value: '',
-                title: ''
+                title: '',
+                txtBefore: '',
+                txtAfter: '',
+                desc: ''
             }
         },
         mounted(){
@@ -43,7 +47,42 @@
         },
         methods:{
             formSub(){
-                console.log(this.userid);
+                if(!this.userid || !this.value || !this.title || !this.desc || !this.txtBefore){
+                    this.$notify.error({
+                        title: '错误',
+                        message: '内容未填写完整！'
+                    });
+                }else{
+                    Axios({
+                        method: 'post',
+                        url: 'http://localhost:3000/addContent',
+                        data:{
+                            userId: this.userid,
+                            category: this.value,
+                            title: this.title,
+                            desc: this.desc,
+                            txtBefore: this.txtBefore
+                        }
+                    }).then((res) => {
+                        let data = res.data;
+                        if(data.status === 0){
+                            this.$notify({
+                                title: '成功',
+                                message: '文章创建成功！',
+                                type: 'success'
+                            });
+                            this.value = '';
+                            this.title = '';
+                            this.desc = '';
+                            this.txtBefore = '';
+                            this.txtAfter = '';
+                        }
+                    });
+                }
+            },
+            txtChange(){
+                const converter = new Showdown.Converter();
+                this.txtAfter = converter.makeHtml(this.txtBefore);
             }
         }
     }
@@ -86,5 +125,18 @@
         color:#c0c4cc;
         font-size:14px;
         font-family: "Microsoft YaHei";
+    }
+    .txt-after{
+        float: right;
+        width: 539px;
+        height: 600px;
+        padding: 5px 15px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        font-size: 14px;
+        color: #606266;
+        border: 1px solid #dcdfe6;
+        border-radius: 4px;
+        transition: border-color .2s cubic-bezier(.645,.045,.355,1);
     }
 </style>

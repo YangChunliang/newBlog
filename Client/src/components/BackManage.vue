@@ -36,8 +36,7 @@
                 }).then((res) => {
                     if(res.data.code === 0){
                         this.name = res.data.username;
-                        this.id = res.data.id;
-                        console.log(res.data);
+                        this.myId = res.data.id;
                     }
                 });
             },
@@ -50,8 +49,7 @@
                 }).then((res) => {
                     if(res.data.code === 0){
                         this.name = res.data.username;
-                        this.id = res.data.id;
-                        console.log(res.data);
+                        this.myId = res.data.id;
                     }else{
                         this.isAdmin = true;
                     }
