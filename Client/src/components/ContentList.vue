@@ -39,7 +39,7 @@
                     label="阅读数"
                     width="100">
             </el-table-column>
-            <el-table-column label="操作">
+            <el-table-column label="操作" prop="_id">
                 <template slot-scope="scope">
                     <el-button
                             size="mini"
@@ -47,7 +47,7 @@
                     <el-button
                             size="mini"
                             type="danger"
-                            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                            @click="handleDelete(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -100,7 +100,8 @@
                             sort: currentValue.category.name,
                             title: currentValue.title,
                             user: currentValue.user.username,
-                            views: currentValue.views
+                            views: currentValue.views,
+                            _id: currentValue._id
                         }
                     });
                 });
@@ -108,8 +109,33 @@
             handleEdit(index, row) {
                 console.log(index, row);
             },
-            handleDelete(index, row) {
-                console.log(index, row);
+            handleDelete(row) {
+                this.$confirm('确定删除该文章?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    Axios({
+                        method: 'get',
+                        url: `http://localhost:3000/contentDelete?id=${row._id}`
+                    }).then((res) => {
+                        let data = res.data;
+                        if(data.status === 0){
+                            this.$message({
+                                type: 'success',
+                                message: '删除成功!'
+                            });
+                            setTimeout(function () {
+                                location.reload();
+                            },2000)
+                        }
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });
+                });
             },
             handleCurrentChange(val){
                 this.getContentBySort(val);
