@@ -59,7 +59,7 @@
             loginOut(){
                 Axios({
                     method: 'get',
-                    url: 'http://localhost:3000/loginout',
+                    url: 'http://blog.springmoon.cn:3000/loginout',
                     data:{}
                 }).then((res) => {
                     if(res.data.code === 0){

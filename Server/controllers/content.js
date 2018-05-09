@@ -88,10 +88,26 @@ let contentDelete = async(ctx, next) => {
     });
     next();
 };
+let editContent = async(ctx, next) => {
+    await Content.update({
+        _id:ctx.request.body.contentId
+    },{
+        category: ctx.request.body.category,
+        title:ctx.request.body.title,
+        description:ctx.request.body.desc,
+        content:ctx.request.body.txtBefore
+    }).then(function(){
+        ctx.response.body = {
+            status: 0
+        };
+    });
+    next();
+};
 module.exports = {
     'GET /content': getContent, //获取批量文章接口
     'GET /view': getView,   //获取单个文章接口
     'GET /category': getCategory, //获取全部分类
     'POST /addContent': addContent, //新增文章
-    'GET /contentDelete': contentDelete //删除文章
+    'GET /contentDelete': contentDelete, //删除文章
+    'POST /editContent': editContent //编辑文章
 };

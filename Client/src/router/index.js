@@ -11,6 +11,7 @@ const BackManage = () => import('../components/BackManage.vue');
 const LeftNav = () => import('../components/LeftNav.vue');
 const ContentList = () => import('../components/ContentList');
 const ContentAdd = () => import('../components/ContentAdd');
+const ContentEdit = () => import('../components/ContentEdit');
 const CategoryList = () => import('../components/CategoryList');
 const CategoryAdd = () => import('../components/CategoryAdd');
 const PersonalCenter = () => import('../components/PersonalCenter');
@@ -84,6 +85,10 @@ export default new Router({
                 {
                     path: 'content_add',
                     component: ContentAdd
+                },
+                {
+                    path: 'content_edit',
+                    component: ContentEdit
                 },
                 {
                     path: 'category_list',

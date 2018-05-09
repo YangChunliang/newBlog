@@ -39,11 +39,9 @@
                     label="阅读数"
                     width="100">
             </el-table-column>
-            <el-table-column label="操作" prop="_id">
+            <el-table-column label="操作" prop="_data">
                 <template slot-scope="scope">
-                    <el-button
-                            size="mini"
-                            @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+                    <router-link :to="scope.row._data.href">编辑</router-link>
                     <el-button
                             size="mini"
                             type="danger"
@@ -62,8 +60,12 @@
 
 <script>
     import Axios from 'axios';
+    import ContentAdd from './ContentAdd.vue';
     export default {
         name: "content-list",
+        components:{
+            ContentAdd
+        },
         data() {
             return {
                 options: [{
@@ -73,13 +75,15 @@
                 value: '全部',
                 tableData: [],
                 page_total: 0,
-                sortName: ''
+                sortName: '',
+                contentEdit: false,
+                articleLink: ''
             }
         },
         mounted(){
             Axios({
                 method: 'get',
-                url: 'http://localhost:3000/category',
+                url: 'http://blog.springmoon.cn:3000/category',
                 data:{
                 }
             }).then((res) => {
@@ -91,7 +95,7 @@
             getContentBySort(page){
                 Axios({
                     method: 'get',
-                    url: `http://localhost:3000/content?limit=6&category=${this.sortName}&page=${page}`
+                    url: `http://blog.springmoon.cn:3000/content?limit=6&category=${this.sortName}&page=${page}`
                 }).then((res) => {
                     this.page_total = res.data.pages;
                     this.tableData = res.data.content.map(function (currentValue) {
@@ -101,13 +105,16 @@
                             title: currentValue.title,
                             user: currentValue.user.username,
                             views: currentValue.views,
-                            _id: currentValue._id
+                            _data: {
+                                _id: currentValue._id,
+                                href: "/manage/content_edit?id=" + currentValue._id
+                            }
                         }
                     });
                 });
             },
-            handleEdit(index, row) {
-                console.log(index, row);
+            handleEdit(row) {
+                location.href = `http://ycl.springmoon.cn/manage/content_edit?id=${row._data._id}`;
             },
             handleDelete(row) {
                 this.$confirm('确定删除该文章?', '提示', {
@@ -117,7 +124,7 @@
                 }).then(() => {
                     Axios({
                         method: 'get',
-                        url: `http://localhost:3000/contentDelete?id=${row._id}`
+                        url: `http://blog.springmoon.cn:3000/contentDelete?id=${row._data._id}`
                     }).then((res) => {
                         let data = res.data;
                         if(data.status === 0){
@@ -157,5 +164,12 @@
     .el-pagination {
         margin-top:20px;
         text-align: center;
+    }
+    .content-edit{
+        position: absolute;
+        right:0;
+        top:0;
+        background-color: #fff;
+        z-index: 10;
     }
 </style>

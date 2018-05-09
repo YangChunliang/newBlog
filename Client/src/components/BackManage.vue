@@ -44,7 +44,7 @@
                 //调用接口，查看是否已经登录
                 Axios({
                     method: 'get',
-                    url: 'http://localhost:3000/islogin',
+                    url: 'http://blog.springmoon.cn:3000/islogin',
                     data:{}
                 }).then((res) => {
                     if(res.data.code === 0){

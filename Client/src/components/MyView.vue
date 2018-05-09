@@ -111,7 +111,7 @@
                 this.loading = true;
                 Axios({
                     method: 'get',
-                    url: `http://localhost:3000/view?contentid=${this.$route.params.view_id}`,
+                    url: `http://blog.springmoon.cn:3000/view?contentid=${this.$route.params.view_id}`,
                 }).then((response) => {
                     let data = response.data;
                     this.myContent = data.content;
