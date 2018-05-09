@@ -115,6 +115,28 @@ let categoryEdit = async(ctx, next) => {
     });
     next();
 };
+let categoryAdd = async(ctx, next) => {
+    let name = ctx.request.body.name;
+    //数据库中是否已经存在同名的分类名称
+    let _status = 0;
+    await Category.findOne({
+        name: name
+    }).then(function(rs){
+        if (rs) {
+            _status  = 1;
+        }else{
+            //数据库中不存在该分类，可以保存
+            return new Category({
+                name:name
+            }).save();
+        }
+    }).then(function(){
+        ctx.response.body = {
+            status: _status
+        };
+    });
+    next();
+};
 module.exports = {
     'GET /content': getContent, //获取批量文章接口
     'GET /view': getView,   //获取单个文章接口
@@ -122,5 +144,6 @@ module.exports = {
     'POST /addContent': addContent, //新增文章
     'GET /contentDelete': contentDelete, //删除文章
     'POST /editContent': editContent, //编辑文章
-    'POST /categoryEdit': categoryEdit //编辑分类
+    'POST /categoryEdit': categoryEdit, //编辑分类
+    'POST /categoryAdd': categoryAdd //增加分类
 };

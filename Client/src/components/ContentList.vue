@@ -1,5 +1,5 @@
 <template>
-    <div class="content-list">
+    <div class="content-list" v-loading="loading">
         <h3>文章列表</h3>
         <el-select v-model="value" placeholder="请选择" @change="myChange">
             <el-option
@@ -41,7 +41,7 @@
             </el-table-column>
             <el-table-column label="操作" prop="_data">
                 <template slot-scope="scope">
-                    <router-link :to="scope.row._data.href">编辑</router-link>
+                    <router-link :to="scope.row._data.href"><a class="con_edit" href="javascript:">编辑</a></router-link>
                     <el-button
                             size="mini"
                             type="danger"
@@ -77,7 +77,8 @@
                 page_total: 0,
                 sortName: '',
                 contentEdit: false,
-                articleLink: ''
+                articleLink: '',
+                loading: true
             }
         },
         mounted(){
@@ -97,6 +98,7 @@
                     method: 'get',
                     url: `http://blog.springmoon.cn:3000/content?limit=6&category=${this.sortName}&page=${page}`
                 }).then((res) => {
+                    this.loading = false;
                     this.page_total = res.data.pages;
                     this.tableData = res.data.content.map(function (currentValue) {
                         return {
@@ -171,5 +173,29 @@
         top:0;
         background-color: #fff;
         z-index: 10;
+    }
+    .con_edit{
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid #dcdfe6;
+        color: #606266;
+        -webkit-appearance: none;
+        text-align: center;
+        box-sizing: border-box;
+        outline: none;
+        margin: 0;
+        transition: .1s;
+        font-weight: 500;
+        padding: 7px 15px;
+        font-size: 12px;
+        border-radius: 3px;
+    }
+    .con_edit:hover{
+        color: #409eff;
+        border-color: #c6e2ff;
+        background-color: #ecf5ff;
     }
 </style>

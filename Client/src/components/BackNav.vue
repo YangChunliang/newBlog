@@ -37,15 +37,6 @@
                     <el-menu-item index="2-2">新增分类</el-menu-item>
                 </router-link>
             </el-submenu>
-            <el-submenu index="3">
-                <template slot="title">
-                    <i class="fa fa-user-circle"></i>
-                    <span slot="title">个人管理</span>
-                </template>
-                <router-link to="/manage/personal_center">
-                    <el-menu-item index="3-1">个人中心</el-menu-item>
-                </router-link>
-            </el-submenu>
         </el-menu>
     </div>
 </template>

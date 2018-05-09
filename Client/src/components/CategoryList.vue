@@ -1,5 +1,6 @@
 <template>
-    <div class="content-edit">
+    <div class="content-edit" v-loading="loading">
+        <h3>分类列表</h3>
         <el-table
             :data="tableData"
             stripe
@@ -33,7 +34,8 @@
         data() {
             return {
                 tableData: [],
-                category: ''
+                category: '',
+                loading: true
             }
         },
         mounted(){
@@ -43,6 +45,7 @@
                 data:{
                 }
             }).then((res) => {
+                this.loading = false;
                 this.tableData = res.data;
             });
         },
