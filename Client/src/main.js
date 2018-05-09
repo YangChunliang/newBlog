@@ -20,6 +20,7 @@ Vue.use(Tag);
 Vue.use(Button);
 Vue.use(Input);
 Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
 Vue.config.productionTip = false;

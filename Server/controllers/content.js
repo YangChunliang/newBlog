@@ -103,11 +103,24 @@ let editContent = async(ctx, next) => {
     });
     next();
 };
+let categoryEdit = async(ctx, next) => {
+    await Category.update({
+        _id:ctx.request.body.id
+    },{
+        name: ctx.request.body.name
+    }).then(function(){
+        ctx.response.body = {
+            status: 0
+        };
+    });
+    next();
+};
 module.exports = {
     'GET /content': getContent, //获取批量文章接口
     'GET /view': getView,   //获取单个文章接口
     'GET /category': getCategory, //获取全部分类
     'POST /addContent': addContent, //新增文章
     'GET /contentDelete': contentDelete, //删除文章
-    'POST /editContent': editContent //编辑文章
+    'POST /editContent': editContent, //编辑文章
+    'POST /categoryEdit': categoryEdit //编辑分类
 };
